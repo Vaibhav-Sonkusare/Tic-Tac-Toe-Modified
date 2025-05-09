@@ -1,0 +1,15 @@
+{
+    "rules": [
+        "Modified Tic-Tac-Toe Rules",
+        "",
+        "1. Two playes take turns: X and O.",
+        "2. The board is a 3x3 grid.",
+        "3. Each player can have only 3 active pieces.",
+        "4. When a 4th move is made, the oldest piece is removed.",
+        "5. You cannot place a mark on an occupied cell.", 
+        "6. To win, allign your 3 current piece in a straight line:",
+        "   - horizontally, vertiaclly, or diagonally.",
+        "",
+        "Think carefully: Your winning combo may disapear!"
+    ]
+}

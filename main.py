@@ -5,9 +5,21 @@ If they have already played their three moves, and thier turn comes, their last 
 They can move anywhere except all the boxex that shows that one have the player has a piece.
 """
 
+from typing import List, Tuple
+import json
+
+def load_rules_form_json(filepath="rules.json") -> list[str]:
+    with open(filepath, "r") as file:
+        data = json.load(file)
+        return data["rules"]
+
 
 def rules() -> None:
-    pass
+    rules = load_rules_form_json()
+    print("")
+    for rule in rules:
+        print(rule)
+    print("")
 
 
 def get_index_array_from_position_number(position) -> list[int]:
@@ -39,10 +51,10 @@ def show_current_board(x_moves, y_moves) -> None:
              ["*", "*", "*"]]
     for move in x_moves:
         index_arr = get_index_array_from_position_number(move)
-        board[index_arr[0]][index_arr[1]] = "X"
+        board[index_arr[1]][index_arr[0]] = "X"
     for move in y_moves:
         index_arr = get_index_array_from_position_number(move)
-        board[index_arr[0]][index_arr[1]] = "O"
+        board[index_arr[1]][index_arr[0]] = "O"
 
     for row in board:
         print(row)
@@ -85,7 +97,7 @@ def check_win(moves):
     return False
 
 
-def move(x_moves, y_moves, turn, input_move=0) -> {list[int], list[int], chr}:
+def move(x_moves: List[int], y_moves: List[int], turn: str, input_move=0) -> Tuple[List[int], List[int], str]:
     all_available_positions = [(x + 1) for x in range(9)]
     occupied_positions = x_moves + y_moves
     available_moves = [x for x in all_available_positions if x not in occupied_positions]
@@ -161,6 +173,7 @@ def main():
     x_moves = []
     y_moves = []
     turn = 'x'
+    rules()
     print("First Move: X's turn.")
     while(1):
         choice = main_menu(x_moves, y_moves)
